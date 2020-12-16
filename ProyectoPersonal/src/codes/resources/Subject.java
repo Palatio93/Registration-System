@@ -4,17 +4,17 @@ public class Subject {
     private int keySubject;
     private String name;
     private int credits;
-    private int hoursWeek;
     private String schedule;
+    private String days;
 
     public Subject() {    }
 
-    public Subject(int keySubject, String name, int credits, int hoursWeek, String schedule) {
+    public Subject(int keySubject, String name, int credits, String schedule, String days) {
         this.keySubject = keySubject;
         this.name = name;
         this.credits = credits;
-        this.hoursWeek = hoursWeek;
         this.schedule = schedule;
+        this.days = days;
     }
 
     public void setKeySubject(int keySubject) {
@@ -29,12 +29,12 @@ public class Subject {
         this.credits = credits;
     }
 
-    public void setHoursWeek(int hoursWeek) {
-        this.hoursWeek = hoursWeek;
-    }
-
     public void setSchedule(String schedule) {
         this.schedule = schedule;
+    }
+
+    public void setDays(String days) {
+        this.days = days;
     }
 
     public int getKeySubject() {
@@ -49,16 +49,20 @@ public class Subject {
         return credits;
     }
 
-    public int getHoursWeek() {
-        return hoursWeek;
-    }
-
     public String getSchedule() {
         return schedule;
     }
 
+    public String getDays() {
+        return days;
+    }
+
     public String printFile() {
-        return keySubject+","+name+","+credits+","+hoursWeek+","+schedule+"\n";
+        return keySubject+","+name+","+credits+","+","+schedule+","+days+"\n";
+    }
+
+    public String simplePrint() {
+        return "Key subject: "+keySubject+" Name: "+name;
     }
 
     @Override
@@ -67,8 +71,8 @@ public class Subject {
                 "keySubject=" + keySubject +
                 ", name='" + name + '\'' +
                 ", credits=" + credits +
-                ", hoursWeek=" + hoursWeek +
                 ", schedule='" + schedule + '\'' +
+                ", days='" + days + '\'' +
                 '}';
     }
 }

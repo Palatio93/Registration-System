@@ -31,7 +31,7 @@ public class Creator {
         tmp.setProfessorID(ch.checkLong());
 
         return tmp;
-    }
+    }   // End createProfessor
 
     public Subject createSubject() {
         Subject tmp = new Subject();
@@ -42,18 +42,19 @@ public class Creator {
         tmp.setName(sc.nextLine());
         System.out.print("Number of credits: ");
         tmp.setCredits(ch.checkInt());
-        System.out.print("Hours a week of the subject: ");
-        tmp.setHoursWeek(ch.checkInt());
         System.out.print("Schedule of the subject: ");
         tmp.setSchedule(sc.nextLine());
+        System.out.print("Days of lecture: ");
+        tmp.setDays(sc.nextLine());
 
         return tmp;
-    }
+    }   // End createSubject
 
-    public Group createGroup() {
+    public Group createGroup(Subject tmpsubj) {
         System.out.print("Key of the group: ");
         Group tmp = new Group(ch.checkInt());
+        tmp.setSubject(tmpsubj);
 
         return tmp;
-    }
+    }   // End createGroup
 }

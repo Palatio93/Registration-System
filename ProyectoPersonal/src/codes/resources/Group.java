@@ -7,7 +7,7 @@ public class Group {
     private int keyGroup;
     private Professor proff;
     private Subject subject;
-    private HashMap<Long,Student> studentsEnrolled;
+    private HashMap<Long,Student> studentsEnrolled = new HashMap<>();
 
     public Group() { }
 
@@ -39,11 +39,19 @@ public class Group {
         return subject;
     }
 
-    public void enrollStudent(Student stu1) {
-        if (studentsEnrolled.size()<=50)
+    public boolean enrollStudent(Student stu1) {
+        if (studentsEnrolled.size()<=50) {
             studentsEnrolled.put(stu1.getStudentID(),stu1);
-        else
+            return true;
+        }
+        else {
             System.out.println("The group is already full. Try in another group please.");
+            return false;
+        }
+    }
+
+    public void addStudents(HashMap<Long,Student> studentsToEnroll) {
+        studentsEnrolled.putAll(studentsToEnroll);
     }
 
     public String toFileStudents() {
@@ -58,6 +66,10 @@ public class Group {
 
     public String printFile() {
         return keyGroup+","+proff+","+subject+","+toFileStudents()+","+"\n";
+    }
+
+    public String simplePrint() {
+        return "Key group: "+keyGroup+" Subject: "+subject+".";
     }
 
     @Override

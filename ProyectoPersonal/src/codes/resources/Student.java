@@ -1,11 +1,12 @@
 package codes.resources;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Student extends Person{
     private long studentID;
-    private Set<Subject> subjects;
-    private Set<Integer> groups;
+    private Set<Subject> subjects = new HashSet<>();
+    private Set<Integer> groups = new HashSet<>();
 
     public void setStudentID(long studentID) {
         this.studentID = studentID;
@@ -18,17 +19,16 @@ public class Student extends Person{
     public void addSubject(Subject sub1) {
         if (subjects.size()<7) {
             subjects.add(sub1);
-            System.out.println("You are now enrolled to: "+sub1.getName());
+//            System.out.println("You are now enrolled to: "+sub1.getName());
         }
         else
             System.out.println("The limit of subjects per semester is 6. You can't enroll more.");
     }
 
-    public void addGroup(Group group1) {
+    public void addGroup(int keygroup) {
         if (groups.size()<7) {
-            groups.add(group1.getKeyGroup());
-            addSubject(group1.getSubject());
-            System.out.println("You are now enrolled to the group: "+group1.getKeyGroup());
+            groups.add(keygroup);
+//            System.out.println("You are now enrolled to the group: "+keygroup);
         } else
             System.out.println("You can't enroll to more groups. The limit is 6.");
     }
@@ -54,13 +54,17 @@ public class Student extends Person{
         return studentID+","+getNames()+","+getLastNames()+","+toFileGroups()+"\n";
     }
 
+    public String simplePrint() {
+        return "Student ID: "+studentID+" Name: "+getNames()+" Lastname: "+getLastNames()+".";
+    }
 
     @Override
     public String toString() {
-        return "Student{" +
-                "studentID=" + studentID +
-                ", subjects=" + subjects +
-                ", groups=" + groups +
-                '}';
+        return "StudentID: "+studentID+
+                " Name: "+getNames()+
+                " Lastname: "+getLastNames()+
+                " Subjects enrolled: "+subjects+
+                " Groups: "+groups+
+                ".";
     }
 }

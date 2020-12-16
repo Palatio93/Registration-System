@@ -1,11 +1,12 @@
 package codes.resources;
 
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Professor extends Person{
     private long professorID;
-    private ArrayList<Subject> subjects;
-    private ArrayList<Group> groups;
+    private Set<Subject> subjects = new HashSet<>();
+    private Set<Integer> groups = new HashSet<>();
 
     public void setProfessorID(long professorID) {
         this.professorID = professorID;
@@ -18,22 +19,22 @@ public class Professor extends Person{
     public void addSubject(Subject subj1) {
         if (subjects.size()<6) {
             subjects.add(subj1);
-            System.out.println("Successfully assigned to: "+subj1.getName());
+//            System.out.println("Successfully assigned to: "+subj1.getName());
         } else
             System.out.println("You can't be assigned to more than 5 subjects.");
     }
 
-    public void addGroup(Group group1) {
+    public void addGroup(int keygroup) {
         if (groups.size()<6) {
-            groups.add(group1);
-            addSubject(group1.getSubject());
-            System.out.println("Successfully assigned to the group: "+group1.getKeyGroup());
+            groups.add(keygroup);
+//            System.out.println("Successfully assigned to the group: "+keygroup);
         } else
             System.out.println("You can't be assigned to more than 5 groups");
     }
 
-
-
+    public String simplePrint() {
+        return "Professor ID: "+professorID+" Name: "+getNames()+" Lastname: "+getLastNames()+".";
+    }
 
     @Override
     public String toString() {

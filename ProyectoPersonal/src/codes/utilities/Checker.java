@@ -14,7 +14,7 @@ public class Checker {
                 System.out.print("Please try again: ");
             }
         } while(true);
-    }   // En checkLong
+    }   // End checkLong
 
     public int checkInt() {
         do {
@@ -25,5 +25,5 @@ public class Checker {
                 System.out.print("Please try again: ");
             }
         } while(true);
-    }
+    }   // End checkInt
 }
