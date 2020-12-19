@@ -7,6 +7,7 @@ public class Main {
         Checker ch = new Checker();
         Menu waiter = new Menu();
         Directive handler = new Directive();
+        handler.load();
 
         System.out.println("Let's start");
 
@@ -40,6 +41,9 @@ public class Main {
                     System.out.println("Invalid option.");
                     break;
             }
+
+            if (exit == 2)
+                break;
 
             waiter.generalMenu();
             System.out.print("Type in your choice: ");

@@ -72,13 +72,29 @@ public class Group {
         return "Key group: "+keyGroup+" Subject: "+subject+".";
     }
 
+    public String getStudentsEnrolled() {
+        String line="";
+        Iterator<Student> itStudents = studentsEnrolled.values().iterator();
+        while(itStudents.hasNext()) {
+            line += "\t\t"+itStudents.next().simplePrint()+"\n";
+        }
+
+        return line;
+    }
+
+    public String getProfessor() {
+        String line="";
+        if (proff==null)
+            return line;
+        else
+            return proff.simplePrint();
+    }
+
     @Override
     public String toString() {
-        return "Group{" +
-                "keyGroup=" + keyGroup +
-                ", proff=" + proff +
-                ", subject=" + subject +
-                ", studentsEnrolled=" + studentsEnrolled +
-                '}';
+        return "Key group: "+keyGroup+
+                " "+subject+
+                "\n\tProfessor: "+getProfessor()+
+                "\n\tStudents enrolled:\n"+getStudentsEnrolled();
     }
 }

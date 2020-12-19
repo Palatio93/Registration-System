@@ -1,12 +1,21 @@
 package codes.resources;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 public class Student extends Person{
     private long studentID;
     private Set<Subject> subjects = new HashSet<>();
     private Set<Integer> groups = new HashSet<>();
+
+    public Student() {
+    }
+
+    public Student(String name, String lastnames, long studentID) {
+        super(name, lastnames);
+        this.studentID=studentID;
+    }
 
     public void setStudentID(long studentID) {
         this.studentID = studentID;
@@ -58,12 +67,21 @@ public class Student extends Person{
         return "Student ID: "+studentID+" Name: "+getNames()+" Lastname: "+getLastNames()+".";
     }
 
+    public String getSubjects() {
+        String line="";
+        Iterator<Subject> itSubject = subjects.iterator();
+        while (itSubject.hasNext()) {
+            line += itSubject.next().simplePrint();
+        }
+        return line;
+    }
+
     @Override
     public String toString() {
         return "StudentID: "+studentID+
                 " Name: "+getNames()+
-                " Lastname: "+getLastNames()+
-                " Subjects enrolled: "+subjects+
+                " Last name: "+getLastNames()+
+                " Subjects enrolled: "+getSubjects()+
                 " Groups: "+groups+
                 ".";
     }

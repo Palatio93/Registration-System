@@ -6,6 +6,11 @@ public class Directive {
     Menu waiter = new Menu();
     Checker ch = new Checker();
     DataBase db = new DataBase();
+    Loader atlas = new Loader();
+
+    public void load() {
+        atlas.loadOldAccessories(db);
+    }
 
     public void creator() {
         waiter.creationalMenu();
@@ -70,6 +75,9 @@ public class Directive {
                 break;
             case 3: // Assign all the Students to a Group
                 db.assignAllStudentsGroup();
+                break;
+            case 4: // Assign a Subject to a Group
+                db.assignSubjectGroup();
                 break;
             default:
                 System.out.println("Invalid option.");

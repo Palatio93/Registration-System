@@ -200,6 +200,7 @@ public class DataBase {
                 if (!hasSpace)
                     break;
             }
+            System.out.println("All the students have been assigned to the group: "+tmpGroup.getKeyGroup());
         } else {
             if (groups.isEmpty())
                 showGroups(false);
@@ -207,5 +208,52 @@ public class DataBase {
                 showStudents(false);
         }
     }   // End assignAllStudentsGroup
+
+    public void assignSubjectGroup() {
+        if (!subjects.isEmpty() && !groups.isEmpty()) {
+            showGroups(false);
+            System.out.print("Enter the key group where you want to assign a Subject: ");
+            int keyGrouptmp = ch.checkInt();
+            while (!groups.containsKey(keyGrouptmp)) {
+                System.out.println("That is not a valid key group.");
+                System.out.print("Enter a valid one: ");
+                keyGrouptmp = ch.checkInt();
+            }
+            Group tmpGroup = groups.get(keyGrouptmp);
+
+            showSubjects(false);
+            System.out.print("Enter the key subject that you want to assign to the group: ");
+            int keySubjecttmp = ch.checkInt();
+            while (!subjects.containsKey(keySubjecttmp)) {
+                System.out.println("Not a valid key subject.");
+                System.out.print("Enter a valid one: ");
+                keySubjecttmp = ch.checkInt();
+            }
+            Subject tmpSubject = subjects.get(keySubjecttmp);
+            tmpGroup.setSubject(tmpSubject);
+            System.out.println("The subject "+tmpSubject.getName()+" has been assigned to the group: "+tmpGroup.getKeyGroup());
+        } else {
+            if (subjects.isEmpty())
+                showSubjects(false);
+            if (groups.isEmpty())
+                showGroups(false);
+        }
+    }   // End assignSubjectGroup
+
+    public void shipStudent(Student tmpStu) {
+        students.put(tmpStu.getStudentID(), tmpStu);
+    }
+
+    public void shipProfessor(Professor tmpProf) {
+        professors.put(tmpProf.getProfessorID(), tmpProf);
+    }
+
+    public void shipSubject(Subject tmpSubject) {
+        subjects.put(tmpSubject.getKeySubject(), tmpSubject);
+    }
+
+    public void shipGroup(Group tmpGroup) {
+        groups.put(tmpGroup.getKeyGroup(), tmpGroup);
+    }
 
 }

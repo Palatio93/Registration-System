@@ -28,5 +28,6 @@ public class Menu {
         System.out.println("\t1) Assign student to a group");
         System.out.println("\t2) Assign professor to a group");
         System.out.println("\t3) Assign all the students to a group");
+        System.out.println("\t4) Assign subject to group");
     }
 }

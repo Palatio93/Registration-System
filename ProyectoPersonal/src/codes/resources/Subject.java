@@ -67,12 +67,11 @@ public class Subject {
 
     @Override
     public String toString() {
-        return "Subject{" +
-                "keySubject=" + keySubject +
-                ", name='" + name + '\'' +
-                ", credits=" + credits +
-                ", schedule='" + schedule + '\'' +
-                ", days='" + days + '\'' +
-                '}';
+        return "Key subject: "+keySubject+
+                " Name: "+name+
+                " Number of credits: "+credits+
+                " Schedule: "+schedule+
+                " Days: "+days+
+                ".";
     }
 }
